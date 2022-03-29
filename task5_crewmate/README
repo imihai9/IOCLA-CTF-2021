@@ -1,0 +1,31 @@
+Task 5 - CREWMATE
+
+Programul apeleaza fgets cu max chars = 64 pentru a citi in vectorul de char
+'name' de size 32, deci se poate suprascrie adresa de retur a functiei main.
+
+Se scriu intai 36B random ('A'): 
+- 32B in vectorul 'name'
+- 4B care suprascriu old frame pointer (ebp)
+
+Se scriu apoi:
+- 4B ('\x06\x85\x04\x08'), care suprascriu adresa de retur pt main cu adresa
+0x08048506 a functiei call_me 
+- 4B random ('A')
+	-> simuleaza adresa de retur pusa de call (~push eip)
+	<call functie> e echivalent cu 2 instructiuni:
+	- push eip
+	- jmp functie
+
+	Noi n-avem un apel call efectiv, se sare la functia 'call_me' pentru
+	ca am suprascris adresa de retur a functiei main 
+
+- 4B ('\x37\x13\x00\x00') - valoarea 0x1337, pentru primul parametru al call_me
+- 8B ('\x41\x4d\x4f\x4e\x47\x20\x55\x53') - valoarea 'AMONG US', pentru al
+	doilea parametru al call_me
+
+	Caracterele se scriu in ordine pentru ca sunt elementele unui vector.
+	Little-endianess se aplica in cadrul datelor >= 2B
+	(ex. 0xaabb -> 0xbbaa, fiecare grupare de 2 caractere hex = 1B)
+
+(Daca cei doi parametri sunt setati astfel, se afiseaza fisierul care contine
+flagul).

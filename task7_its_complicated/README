@@ -1,0 +1,20 @@
+Task 7 - IT'S COMPLICATED
+
+Programul apeleaza gets pentru a citi intr-un vector de char de size 64, la
+[ebp-84], urmat in stack de un pointer la o adresa de cod la [ebp-20] (codul
+de la aceasta adresa e apelat in program, iar adresa se poate suprascrie). 
+
+Deci, la citire se scriu initial 64 caractere random 'A' pentru a umple vectorul
+de char.
+
+Urmeaza adresa codului care va fi apelat.
+Initial, am suprascris-o cu 0x080489ae, adresa unei functii care listeaza
+fisierele din directorul curent.
+
+Apoi, am rulat din nou binarul, am suprascris-o cu 0x0804883b -
+functie care citeste un fisier cu numele dat la input. In shellcode, am
+dat un caracter newline, pt a a termina apelul 'gets', urmat de 'onion.txt'
+(aici se afla flagul), apoi alt newline pt a trimite input-ul.
+
+Dupa, se apeleaza `cat payload | nc <ip> <port>`, pentru a trimite
+payload-ul pe server si a obtine flag-ul aflat in ./onion.txt.

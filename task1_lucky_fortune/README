@@ -1,0 +1,4 @@
+Task 1 - LUCKY FORTUNE
+
+Analizand cu Ghidra, flag-ul e vizibil, la adresa 0x00100998, in data segment.
+(ds "iocla_d1d_anyb0dy_s@y_lucky_f0rtun3?")

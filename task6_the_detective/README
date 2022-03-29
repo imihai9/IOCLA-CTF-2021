@@ -1,0 +1,7 @@
+Task 6 - THE DETECTIVE
+
+Functia decode_letter (0x08048426) decodeaza un caracter folosind
+un offset.
+
+In solve.c trec caracterele sirului dat 'ciwfu_xywcjbyl_gy' prin decode_letter,
+cu diferite offset-uri, pana obtin flag-ul de tip 'iocla_[..]'.

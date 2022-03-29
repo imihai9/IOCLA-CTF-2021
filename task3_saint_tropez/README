@@ -1,0 +1,11 @@
+Task 3 - SAINT TROPEZ
+
+Programul apeleaza fgets cu max chars = 64 pentru a citi in vectorul de char
+'name' de size 32, deci se poate suprascrie adresa de retur a functiei main.
+
+Se scriu intai 36B random ('A'): 
+- 32B in vectorul 'name'
+- 4B care suprascriu old frame pointer (ebp)
+
+Se scriu apoi 4B ('\x06\x85\x04\x08') care suprascriu adresa de retur pt main
+- adresa 0x08048506 a functiei give_shell, care afiseaza flagul.

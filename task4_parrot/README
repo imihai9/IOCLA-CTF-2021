@@ -1,0 +1,16 @@
+Task 4 - PARROT
+
+Programul apeleaza fgets cu max chars = 200 pentru a citi in vectorul de char
+'name' de size 100, stocat la [ebp-116]
+
+Vectorul e urmat in stiva de o variabila int la [ebp-16]. Daca aceasta variabila
+e egala cu 0xdeadbeef, se apeleaza functia success, care apeleaza
+`cat /home/ctf/flag`. Valoarea variabilei se poate suprascrie, din moment ce
+fgets are size 200.
+
+Deci, la citire se scriu 100 caractere random 'A', urmate de valoarea 0xdeadbeef
+scrisa invers din cauza litle-endianness, care va fi suprascrisa in variabila
+mentionata.
+
+Dupa, se apeleaza `cat payload | nc <ip> <port>`, pentru a trimite
+payload-ul pe server si a obtine flag-ul aflat in /home/ctf/flag.

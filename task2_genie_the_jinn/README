@@ -1,0 +1,14 @@
+Task 2 - GENIE THE JINN
+
+In program, se foloseste fgets (vulnerabil) pentru a citi intr-un vector de 10
+caractere de pe stiva [ebp-30].
+
+Vectorul e urmat in stiva de o variabila int la [ebp-20]. Daca aceasta variabila
+e egala cu 0xf1be, se apeleaza get_flag, care apeleaza `cat /home/ctf/flag`.
+
+Deci, la citire se scriu 10 caractere random 'A', urmate de valoarea 0xf1be
+scrisa ca '\xbe\xf1' (datorita litle-endianness), care va fi scrisa in variabila
+mentionata.
+
+Dupa, se apeleaza `cat payload | nc <ip> <port>`, pentru a trimite
+payload-ul pe server si a obtine flag-ul aflat in /home/ctf/flag.
